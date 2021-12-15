@@ -10,7 +10,7 @@ export async function createUser(req: Request, res: Response) {
   res.json(createdUser)
 }
 
-export async function getUserInfo(req: Request, res: Response) {
+export async function getUser(req: Request, res: Response) {
   const user = await UserModel.findById(req.params.id)
 
   if(!user) {

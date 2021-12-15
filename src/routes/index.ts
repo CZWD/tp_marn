@@ -1,20 +1,29 @@
 import { Router } from 'express'
-import { createGame, getGameInfo, getGames, deleteGame, updateGame } from '../controllers/game'
-import { createUser, getUserInfo, getUsers, deleteUser, updateUser } from '../controllers/user'
+import { addGameInfo, createGame, getGame, getGames, getStats, getGameByUser, getLastGame, deleteGame, updateGame } from '../controllers/game'
+import { createUser, getUser, getUsers, deleteUser, updateUser } from '../controllers/user'
 
 export const router = Router()
 
-router.post('/game', createGame)
+/**GET */
+router.get('/game/:id', getGame)
+router.get('/user/:id', getUser)
+
+router.get('/games/by-user/:userId', getGameByUser)
+router.get('/games/last', getLastGame)
+router.get('/games', getGames)
+
+router.get('/users', getUsers)
+router.get('/users/stats', getStats)
+
+/**POST */
+router.post('/game/add', createGame)
 router.post('/user', createUser)
 
-router.post('/game/:id', updateGame)
-router.post('/user/:id', updateUser)
+/**PUT */
+router.put('/game/info/:id', addGameInfo)
+router.put('/game/:id', updateGame)
+router.put('/user/:id', updateUser)
 
-router.get('/game/:id', getGameInfo)
-router.get('/user/:id', getUserInfo)
-
-router.get('/games', getGames)
-router.get('/users', getUsers)
-
+/**DELETE */
 router.delete('/games/:id', deleteGame)
 router.delete('/users/:id', deleteUser)

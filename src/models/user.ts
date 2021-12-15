@@ -3,6 +3,7 @@ import { Schema, model } from 'mongoose'
 export interface User {
   name: string
   addedAt: Date
+  gamesAdded: number
 }
 
 export const userSchema = new Schema<User>({
